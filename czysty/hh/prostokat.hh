@@ -24,6 +24,7 @@ class prostokat : public punkt
 
 public:
     prostokat();
+    prostokat pobierz_prostokat();
     bool boki();
 
 

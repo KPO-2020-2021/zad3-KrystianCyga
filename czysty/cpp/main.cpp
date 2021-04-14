@@ -1,5 +1,6 @@
 #include "vector.hh"
 #include "matrix.hh"
+#include "prostokat.hh"
 #include <iostream>
 #include <cstdlib>
 
@@ -8,7 +9,8 @@ int main()
     char wyb;
     while (wyb != 'k')
     {
-        boki_spr();
+        prostokat prost;
+        prost.pobierz_prostokat();
 
         std::cout << "************************MENU************************\n";
         std::cout << "  o-obrot prostokata o zadany kat\n";

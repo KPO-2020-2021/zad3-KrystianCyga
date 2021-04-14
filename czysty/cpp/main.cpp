@@ -1,16 +1,21 @@
-#include "vector.hh"
-#include "matrix.hh"
 #include "prostokat.hh"
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
+
+bool wczytajzpliku(const char *nazwa);
+prostokat prost;
 
 int main()
 {
     char wyb;
     while (wyb != 'k')
     {
-        prostokat prost;
+        
         prost.pobierz_prostokat();
+        
+        prost.boki();
+        
 
         std::cout << "************************MENU************************\n";
         std::cout << "  o-obrot prostokata o zadany kat\n";
@@ -54,3 +59,4 @@ int main()
         }
     }
 }
+

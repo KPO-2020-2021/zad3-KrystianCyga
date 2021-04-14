@@ -12,8 +12,7 @@ int main()
     while (wyb != 'k')
     {
         
-        prost.pobierz_prostokat();
-        
+        prost.pobierz_prostokat(prost);
         prost.boki();
         
 
@@ -21,6 +20,7 @@ int main()
         std::cout << "  o-obrot prostokata o zadany kat\n";
         std::cout << "  p-przesuniecie o dany wektor\n";
         std::cout << "  w-wyswietlenie wspolrzednych wierzcholkow\n";
+        std::cout << "  m-powrot do menu\n";
         std::cout << "  k-koniec dzialania programu\n";
         std::cout << "  Twoj wybor -> :";
         std::cin >> wyb;

@@ -1,7 +1,6 @@
 #ifndef PROSTOKAT_HH
 #define PROSTOKAT_HH
 
-#include "size.hh"
 #include <iostream>
 #include <math.h>
 #include <fstream>
@@ -23,13 +22,13 @@ punkt::punkt()
 
 class prostokat : public punkt
 {
-protected:
+public:
     punkt a, b, c, d;
     double AB, BC, CD, DA;
 
 public:
     prostokat();
-    prostokat pobierz_prostokat();
+    prostokat pobierz_prostokat(prostokat &pom);
     void boki();
 };
 
@@ -55,29 +54,29 @@ void prostokat::boki()
 
     if (abs(AB - CD) < epsilon)
     {
-        std::cout << "Dluzsze boki :" << AB << " i " << CD << " sa rowne." ;
+        std::cout << "  Dluzsze boki : " << AB << " i " << CD << " sa rowne.\n";
     }
     else
     {
-        std::cout << "Dluzsze boki :" << AB << " i " << CD << " nie sa rowne." ;
+        std::cout << "  Dluzsze boki : " << AB << " i " << CD << " nie sa rowne.\n";
     }
 
     if (abs(BC - DA) < epsilon)
     {
-        std::cout << "Krotsze boki :" << BC << " i " << DA << " sa rowne." ;
+        std::cout << "  Krotsze boki : " << BC << " i " << DA << " sa rowne.\n\n";
     }
     else
     {
-        std::cout << "Krotsze boki :" << BC << " i " << DA << " nie sa rowne." ;
+        std::cout << "  Krotsze boki : " << BC << " i " << DA << " nie sa rowne.\n\n";
     }
 }
 
-prostokat prostokat::pobierz_prostokat()
+prostokat prostokat::pobierz_prostokat(prostokat &pom)
 {
 
     std::ifstream StrmPlikowy;
 
-    StrmPlikowy.open("../datasets/prostokat.dat");
+    StrmPlikowy.open("prostokat.dat");
     if (!StrmPlikowy.is_open())
     {
         std::cerr << ":(  Operacja otwarcia do zapisu \""
@@ -85,16 +84,21 @@ prostokat prostokat::pobierz_prostokat()
                   << "\"" << std::endl
                   << ":(  nie powiodla sie." << std::endl;
         exit(0);
-
-        StrmPlikowy >> prostokat::a.x;
-        StrmPlikowy >> prostokat::a.y;
-        StrmPlikowy >> prostokat::b.x;
-        StrmPlikowy >> prostokat::b.y;
-        StrmPlikowy >> prostokat::c.x;
-        StrmPlikowy >> prostokat::c.y;
-        StrmPlikowy >> prostokat::d.x;
-        StrmPlikowy >> prostokat::d.y;
     }
+    
+
+    StrmPlikowy >> pom.a.x;
+    StrmPlikowy >> pom.a.y;
+    StrmPlikowy >> pom.b.x;
+    StrmPlikowy >> pom.b.y;
+    StrmPlikowy >> pom.c.x;
+    StrmPlikowy >> pom.c.y;
+    StrmPlikowy >> pom.d.x;
+    StrmPlikowy >> pom.d.y;
+
+    StrmPlikowy.close();
+
+    return pom;
 }
 
 #endif

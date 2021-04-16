@@ -24,6 +24,8 @@ public:
     double &operator()(unsigned int row, unsigned int column);
 
     const double &operator()(unsigned int row, unsigned int column) const;
+
+    Matrix Mobrot_tworzenie(int kat);
 };
 
 std::istream &operator>>(std::istream &in, Matrix &mat);
@@ -49,9 +51,9 @@ Matrix::Matrix()
 }
 
 /******************************************************************************
- |  Konstruktor parametryczny klasy Matrix.                                              |
+ |  Konstruktor parametryczny klasy Matrix.                                   |
  |  Argumenty:                                                                |
- |      tmp - dwuwymiarowa tablica z elementami typu double.                               |
+ |      tmp - dwuwymiarowa tablica z elementami typu double.                  |
  |  Zwraca:                                                                   |
  |      Macierz wypelniona wartosciami podanymi w argumencie.                 |
  */
@@ -137,12 +139,12 @@ const double &Matrix::operator()(unsigned int row, unsigned int column) const
 }
 
 /******************************************************************************
- |  Przeciążenie dodawania macierzy                                                          |
+ |  Przeciążenie dodawania macierzy                                           |
  |  Argumenty:                                                                |
- |      this - macierz, czyli pierwszy skladnik dodawania,                     |
- |      v - wektor, czyli drugi skladnik dodawania.                                               |
+ |      this - macierz, czyli pierwszy skladnik dodawania,                    |
+ |      v - wektor, czyli drugi skladnik dodawania.                           |
  |  Zwraca:                                                                   |
- |      Macierz - iloczyn dwóch podanych macierzy.                  |
+ |      Macierz - iloczyn dwóch podanych macierzy.                            |
  */
 Matrix Matrix::operator+(Matrix tmp)
 {
@@ -161,7 +163,7 @@ Matrix Matrix::operator+(Matrix tmp)
  |  Przeciazenie operatora >>                                                 |
  |  Argumenty:                                                                |
  |      in - strumien wyjsciowy,                                              |
- |      mat - macierz.                                                         |
+ |      mat - macierz.                                                        |
  */
 std::istream &operator>>(std::istream &in, Matrix &mat)
 {
@@ -192,4 +194,14 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat)
         std::cout << std::endl;
     }
     return out;
+}
+
+Matrix Matrix::Mobrot_tworzenie(int kat)
+{
+    double rad=kat * M_PI / 180;
+    value[0][0]=cos(rad);
+    value[0][1]=-sin(rad);
+    value[1][0]=sin(rad);
+    value[1][1]=cos(rad);
+    return *this;
 }

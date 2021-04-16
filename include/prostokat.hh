@@ -19,6 +19,7 @@ class prostokat : public Vector
 public:
     prostokat();
     void boki();
+    prostokat obrot(double kat,int ilosc);
 };
 
 prostokat::prostokat()
@@ -78,5 +79,21 @@ void prostokat::boki()
     {
         std::cout << "  " << dlugosc2 << " boki : " << BC << " i " << DA << " nie sa rowne.\n\n";
     }
+    std::cout.precision(4);
+}
+
+prostokat prostokat::obrot(double kat,int ilosc)
+{
+    prostokat obrocony;
+    Matrix Mrotacji;
+
+    Mrotacji.Mobrot_tworzenie(kat);
+
+    for (int i = 0; i < 4; i++)
+    {
+        obrocony.wektor[i]=Mrotacji*this->wektor[i];
+    }
+    
+    return obrocony;
 
 }

@@ -1,13 +1,14 @@
 #pragma once
 
-#include "size.hh"
+#include "SIZE.hh"
 #include <iostream>
+#include <stdexcept>
 
 class Vector {
 
 private:
 
-    double size[SIZE];     //Tablica wektora
+    double wspolrzedne[SIZE];     //Tablica wektora
 
 public:
 
@@ -29,6 +30,8 @@ public:
 
     bool operator == (const Vector &drugi);
 
+    void zapelniacz();
+
 };
 
 std::ostream &operator << (std::ostream &out, Vector const &tmp);
@@ -45,7 +48,7 @@ std::istream &operator >> (std::istream &in, Vector &tmp);
  */
 Vector::Vector() {
     for (int i = 0; i < SIZE; ++i) {
-        size[i] = 0;
+        wspolrzedne[i] = 0;
     }
 }
 
@@ -60,10 +63,14 @@ Vector::Vector() {
 
 Vector::Vector(double tmp[SIZE]) {
     for (int i = 0; i < SIZE; ++i) {
-        size[i] = tmp[i];
+        wspolrzedne[i] = tmp[i];
     }
 }
 
+void zapelniacz()
+{
+    Vector();
+}
 
 /******************************************************************************
  |  Realizuje dodawanie dwoch wektorow.                                       |
@@ -77,7 +84,7 @@ Vector::Vector(double tmp[SIZE]) {
 Vector Vector::operator + (const Vector &v) {
     Vector result;
     for (int i = 0; i < SIZE; ++i) {
-        result[i] = size[i] += v[i];
+        result[i] = wspolrzedne[i] += v[i];
     }
     return result;
 }
@@ -95,7 +102,7 @@ Vector Vector::operator + (const Vector &v) {
 Vector Vector::operator - (const Vector &v) {
     Vector result;
     for (int i = 0; i < SIZE; ++i) {
-        result[i] = size[i] -= v[i];
+        result[i] = wspolrzedne[i] -= v[i];
     }
     return result;
 }
@@ -114,7 +121,7 @@ Vector Vector::operator - (const Vector &v) {
 Vector Vector::operator * (const double &tmp) {
     Vector result;
     for (int i = 0; i < SIZE; ++i) {
-        result[i] = size[i] *= tmp;
+        result[i] = wspolrzedne[i] *= tmp;
     }
     return result;
 }
@@ -134,7 +141,7 @@ Vector Vector::operator / (const double &tmp) {
     Vector result;
 
     for (int i = 0; i < SIZE; ++i) {
-        result[i] = size[i] / tmp;
+        result[i] = wspolrzedne[i] / tmp;
     }
 
     return result;
@@ -153,7 +160,7 @@ const double &Vector::operator [] (int index) const {
     {
         std::out_of_range("Error: Vektor jest poza zasiegiem");
     } 
-    return size[index];
+    return wspolrzedne[index];
 }
 
 

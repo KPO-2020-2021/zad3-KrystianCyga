@@ -16,6 +16,7 @@
 #include "example.h"
 #include "vector.hh"
 #include "matrix.hh"
+#include "prostokat.hh"
 #include "../include/lacze_do_gnuplota.hh"
 
 /*!

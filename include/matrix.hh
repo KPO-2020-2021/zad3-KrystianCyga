@@ -1,9 +1,10 @@
 #pragma once
 
-#include "size.hh"
+#include "SIZE.hh"
 #include "vector.hh"
 #include <iostream>
 #include <cstdlib>
+#include <stdexcept>
 
 class Matrix
 {

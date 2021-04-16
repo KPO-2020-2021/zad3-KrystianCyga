@@ -16,6 +16,8 @@ public:
 
     Vector(double [SIZE]);
 
+    double dlugosc(const Vector &drugi);
+
     Vector operator + (const Vector &v);
 
     Vector operator - (const Vector &v);
@@ -30,7 +32,7 @@ public:
 
     bool operator == (const Vector &drugi);
 
-    void zapelniacz();
+    void zapelniacz(double arg[2]);
 
 };
 
@@ -67,9 +69,15 @@ Vector::Vector(double tmp[SIZE]) {
     }
 }
 
-void zapelniacz()
+double Vector::dlugosc(const Vector &drugi)
 {
-    Vector();
+    return sqrt(pow(drugi.wspolrzedne[0]-this->wspolrzedne[0],2)+(pow(drugi.wspolrzedne[1]-this->wspolrzedne[1],2)));
+}
+
+
+void zapelniacz(double arg[2])
+{
+    Vector(arg[2]);
 }
 
 /******************************************************************************

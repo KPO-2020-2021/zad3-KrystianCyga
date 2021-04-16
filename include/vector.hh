@@ -27,11 +27,14 @@ public:
 
     double &operator [] (int index);
 
+    bool operator == (const Vector &drugi);
+
 };
 
 std::ostream &operator << (std::ostream &out, Vector const &tmp);
 
 std::istream &operator >> (std::istream &in, Vector &tmp);
+
 
 /******************************************************************************
  |  Konstruktor klasy Vector.                                                 |
@@ -146,9 +149,10 @@ Vector Vector::operator / (const double &tmp) {
  |      Wartosc wektora w danym miejscu tablicy jako stala.                   |
  */
 const double &Vector::operator [] (int index) const {
-    if (index < 0 || index >= SIZE) {
-        std::cerr << "Error: Wektor jest poza zasiegiem!" << std::endl;
-    } // lepiej byłoby rzucić wyjątkiem stdexcept
+    if (index < 0 || index >= SIZE) 
+    {
+        std::out_of_range("Error: Vektor jest poza zasiegiem");
+    } 
     return size[index];
 }
 

@@ -4,26 +4,16 @@
 #include <iostream>
 #include <math.h>
 #include <fstream>
+#include "vector.hh"
 
 #define epsilon 0.00001
 
-class punkt
+
+
+class prostokat : public vector
 {
 public:
-    double x, y;
-    punkt();
-};
-
-punkt::punkt()
-{
-    x = 0;
-    y = 0;
-}
-
-class prostokat : public punkt
-{
-public:
-    punkt a, b, c, d;
+    vector a, b, c, d;
     double AB, BC, CD, DA;
 
 public:
@@ -34,10 +24,10 @@ public:
 
 prostokat::prostokat()
 {
-    punkt(a);
-    punkt(b);
-    punkt(c);
-    punkt(d);
+    vector(a);
+    vector(b);
+    vector(c);
+    vector(d);
 
     AB = 0;
     BC = 0;
@@ -52,9 +42,11 @@ void prostokat::boki()
     CD = sqrt((d.x - c.x) * (d.x - c.x) + (d.y - c.y) * (d.y - c.y));
     DA = sqrt((a.x - d.x) * (a.x - d.x) + (a.y - d.y) * (a.y - d.y));
 
+    std::cout.precision(15);
+
     if (abs(AB - CD) < epsilon)
     {
-        std::cout << "  Dluzsze boki : " << AB << " i " << CD << " sa rowne.\n";
+        std::cout<< "  Dluzsze boki : " << AB << " i " << CD << " sa rowne.\n";
     }
     else
     {

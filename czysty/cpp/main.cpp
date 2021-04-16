@@ -30,6 +30,12 @@ int main()
 
         case 'o':
 
+            double kat,ilosc;
+            std::cout<<"Podaj kat obrotu: ";
+            std::cin>>kat;
+            std::cout<<"Podaj ilosc operacji: ";
+            std::cin>>ilosc;
+
             break;
 
         case 'p':

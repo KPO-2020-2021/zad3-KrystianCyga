@@ -22,6 +22,10 @@ public:
     prostokat obrot(double kat,int ilosc);
 };
 
+std::ifstream &operator>>(std::istream &in, prostokat &prost);
+
+std::ostream &operator<<(std::ifstream &out, prostokat const &prost);
+
 prostokat::prostokat()
     : Vector()
 {
@@ -95,5 +99,15 @@ prostokat prostokat::obrot(double kat,int ilosc)
     }
     
     return obrocony;
+
+}
+
+std::ostream &operator<<(std::ifstream &out, prostokat const &prost)
+{
+    out
+}
+
+std::ifstream &operator>>(std::istream &in, prostokat &prost)
+{
 
 }

@@ -34,6 +34,8 @@ public:
 
     void zapelniacz(double arg[2]);
 
+    double modul();
+
 };
 
 std::ostream &operator << (std::ostream &out, Vector const &tmp);
@@ -74,6 +76,10 @@ double Vector::dlugosc(const Vector &drugi)
     return sqrt(pow(drugi.wspolrzedne[0]-this->wspolrzedne[0],2)+(pow(drugi.wspolrzedne[1]-this->wspolrzedne[1],2)));
 }
 
+double Vector::modul()
+{
+    return (sqrt(wspolrzedne[0]*wspolrzedne[0]+wspolrzedne[1]*wspolrzedne[1]));
+}
 
 void zapelniacz(double arg[2])
 {

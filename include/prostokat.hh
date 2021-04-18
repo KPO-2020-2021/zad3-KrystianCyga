@@ -17,14 +17,19 @@ class prostokat : public Vector
     double AB, BC, CD, DA;
 
 public:
+
+    friend std::ostream &operator<<(std::ostream &out, prostokat const &prost);
     prostokat();
     void boki();
-    prostokat obrot(double kat,int ilosc);
+    prostokat obrot(double kat, int ilosc);
+    prostokat obrot(double kat);
+    Vector operator[](int punkt);
+    bool zapis(const std::string &nazwa) const;
+    bool owektor(Vector &wek);
+    bool wczytaj(const std::string &nazwa);
 };
 
 std::ifstream &operator>>(std::istream &in, prostokat &prost);
-
-std::ostream &operator<<(std::ifstream &out, prostokat const &prost);
 
 prostokat::prostokat()
     : Vector()
@@ -38,6 +43,11 @@ prostokat::prostokat()
             wektor[i].zapelniacz(tab);
         }
     }
+}
+
+Vector prostokat::operator[](int punkt)
+{
+    return wektor[punkt];
 }
 
 void prostokat::boki()
@@ -74,9 +84,9 @@ void prostokat::boki()
     if (abs(BC - DA) < epsilon)
     {
         std::cout << "  " << dlugosc2 << " boki : " << BC << " i " << DA << " sa rowne.\n\n";
-        if(AB==BC)
+        if (AB == BC)
         {
-            std::cout<<"Ta figura to kwadrat !!!";
+            std::cout << "Ta figura to kwadrat !!!";
         }
     }
     else
@@ -86,7 +96,7 @@ void prostokat::boki()
     std::cout.precision(4);
 }
 
-prostokat prostokat::obrot(double kat,int ilosc)
+prostokat prostokat::obrot(double kat, int ilosc)
 {
     prostokat obrocony;
     Matrix Mrotacji;
@@ -95,19 +105,81 @@ prostokat prostokat::obrot(double kat,int ilosc)
 
     for (int i = 0; i < 4; i++)
     {
-        obrocony.wektor[i]=Mrotacji*this->wektor[i];
+        obrocony.wektor[i] = Mrotacji * this->wektor[i];
     }
-    
-    return obrocony;
 
+    return obrocony;
 }
 
-std::ostream &operator<<(std::ifstream &out, prostokat const &prost)
+prostokat prostokat::obrot(double kat)
 {
-    out
+
+}
+std::ostream &operator<<(std::ostream &out, prostokat const &prost)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        out << prost.wektor[i] << std::endl;
+    }
+    return out;
 }
 
 std::ifstream &operator>>(std::istream &in, prostokat &prost)
 {
+}
 
+bool prostokat::zapis(const std::string &nazwa) const
+{
+    std::fstream plik;
+
+    plik.open(nazwa, std::fstream::out);
+    if (plik.is_open() == false)
+    {
+        return false;
+    }
+
+    plik << *this;
+    plik << this->wektor[0];
+    if (plik.fail())
+    {
+        plik.close();
+        return false;
+    }
+    plik.close();
+    return true;
+}
+
+bool prostokat::owektor(Vector &wek)
+{
+    if (wek.modul() == 0)
+        return false;
+    for (int i = 0; i < 4; i++)
+    {
+        wektor[i] = wektor[i] + wek;
+    }
+    return true;
+}
+
+bool prostokat::wczytaj(const std::string &nazwa)
+{
+    std::fstream plik;
+
+    plik.open(nazwa);
+    if (plik.is_open() == false)
+    {
+        return false;
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        plik >> wektor[i];
+        if (plik.fail())
+        {
+            plik.close();
+            return false;
+        }
+    }
+    plik >> wektor[3];
+    plik.close();
+    return true;
 }

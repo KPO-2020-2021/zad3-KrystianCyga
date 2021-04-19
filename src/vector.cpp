@@ -1,36 +1,5 @@
+#include <vector.hh>
 
-#include "size.hh"
-#include <iostream>
-
-class Vector {
-
-private:
-
-    double size[SIZE];     //Tablica wektora
-
-public:
-
-    Vector();
-
-    Vector(double [SIZE]);
-
-    Vector operator + (const Vector &v);
-
-    Vector operator - (const Vector &v);
-
-    Vector operator * (const double &tmp);
-
-    Vector operator / (const double &tmp);
-
-    const double &operator [] (int index) const;
-
-    double &operator [] (int index);
-
-};
-
-std::ostream &operator << (std::ostream &out, Vector const &tmp);
-
-std::istream &operator >> (std::istream &in, Vector &tmp);
 
 /******************************************************************************
  |  Konstruktor klasy Vector.                                                 |
@@ -41,7 +10,7 @@ std::istream &operator >> (std::istream &in, Vector &tmp);
  */
 Vector::Vector() {
     for (int i = 0; i < SIZE; ++i) {
-        size[i] = 0;
+        wspolrzedne[i] = 0;
     }
 }
 
@@ -56,10 +25,44 @@ Vector::Vector() {
 
 Vector::Vector(double tmp[SIZE]) {
     for (int i = 0; i < SIZE; ++i) {
-        size[i] = tmp[i];
+        wspolrzedne[i] = tmp[i];
     }
 }
 
+/******************************************************************************
+ |  Oblicza dlugosc wectora.                                                  |
+ |  Argumenty:                                                                |
+ |      drugi - drugi wektor.                                                 |
+ |  Zwraca:                                                                   |
+ |      Dlugosc wektora                                                       |
+*/
+double Vector::dlugosc(const Vector &drugi)
+{
+    return sqrt(pow(drugi.wspolrzedne[0]-this->wspolrzedne[0],2)+(pow(drugi.wspolrzedne[1]-this->wspolrzedne[1],2)));
+}
+/******************************************************************************
+ |  Oblicza modul wectora.                                                    |
+ |  Argumenty:                                                                |
+ |      -wektor                                                               |
+ |  Zwraca:                                                                   |
+ |      -modul wektora                                                        |
+*/
+double Vector::modul()
+{
+    return (sqrt(wspolrzedne[0]*wspolrzedne[0]+wspolrzedne[1]*wspolrzedne[1]));
+}
+
+/******************************************************************************
+ |  Uzupelnia pola wektora podanymi argumentami.                              |
+ |  Argumenty:                                                                |
+ |      arg-tablica elementow                                                 |
+ |                                                                            |
+ |                                                                            |
+*/
+void zapelniacz(double arg[2])
+{
+    Vector(arg[2]);
+}
 
 /******************************************************************************
  |  Realizuje dodawanie dwoch wektorow.                                       |
@@ -73,7 +76,7 @@ Vector::Vector(double tmp[SIZE]) {
 Vector Vector::operator + (const Vector &v) {
     Vector result;
     for (int i = 0; i < SIZE; ++i) {
-        result[i] = size[i] += v[i];
+        result[i] = wspolrzedne[i] += v[i];
     }
     return result;
 }
@@ -91,7 +94,7 @@ Vector Vector::operator + (const Vector &v) {
 Vector Vector::operator - (const Vector &v) {
     Vector result;
     for (int i = 0; i < SIZE; ++i) {
-        result[i] = size[i] -= v[i];
+        result[i] = wspolrzedne[i] -= v[i];
     }
     return result;
 }
@@ -110,7 +113,7 @@ Vector Vector::operator - (const Vector &v) {
 Vector Vector::operator * (const double &tmp) {
     Vector result;
     for (int i = 0; i < SIZE; ++i) {
-        result[i] = size[i] *= tmp;
+        result[i] = wspolrzedne[i] *= tmp;
     }
     return result;
 }
@@ -130,7 +133,7 @@ Vector Vector::operator / (const double &tmp) {
     Vector result;
 
     for (int i = 0; i < SIZE; ++i) {
-        result[i] = size[i] / tmp;
+        result[i] = wspolrzedne[i] / tmp;
     }
 
     return result;
@@ -145,10 +148,11 @@ Vector Vector::operator / (const double &tmp) {
  |      Wartosc wektora w danym miejscu tablicy jako stala.                   |
  */
 const double &Vector::operator [] (int index) const {
-    if (index < 0 || index >= SIZE) {
-        std::cerr << "Error: Wektor jest poza zasiegiem!" << std::endl;
-    } // lepiej byłoby rzucić wyjątkiem stdexcept
-    return size[index];
+    if (index < 0 || index >= SIZE) 
+    {
+        std::out_of_range("Error: Vektor jest poza zasiegiem");
+    } 
+    return wspolrzedne[index];
 }
 
 

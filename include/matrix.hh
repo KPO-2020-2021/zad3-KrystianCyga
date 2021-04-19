@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <stdexcept>
 
+#define epsilon 0.000001
+
 class Matrix
 {
 
@@ -26,6 +28,8 @@ public:
     const double &operator()(unsigned int row, unsigned int column) const;
 
     Matrix Mobrot_tworzenie(int kat);
+
+    bool operator==(const Matrix &tmp) const;
 };
 
 std::istream &operator>>(std::istream &in, Matrix &mat);

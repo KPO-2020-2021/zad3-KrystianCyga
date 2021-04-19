@@ -8,6 +8,7 @@
 #include <stdexcept>
 #include <string>
 #include <fstream>
+#include <iomanip>
 
 #define epsilon 0.00001
 
@@ -21,6 +22,7 @@ class prostokat : public Vector
 public:
 
     friend std::ostream &operator<<(std::ostream &out, prostokat const &prost);
+    friend std::ofstream &operator<<(std::ofstream &of, prostokat const &prost);
     prostokat();
     void boki();
     prostokat obrot(double kat, int ilosc);

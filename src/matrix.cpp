@@ -110,9 +110,9 @@ const double &Matrix::operator()(unsigned int row, unsigned int column) const
  |  Przeciążenie dodawania macierzy                                           |
  |  Argumenty:                                                                |
  |      this - macierz, czyli pierwszy skladnik dodawania,                    |
- |      v - wektor, czyli drugi skladnik dodawania.                           |
+ |      tmp - macierz czyli drugi skladnik dodawania.                           |
  |  Zwraca:                                                                   |
- |      Macierz - iloczyn dwóch podanych macierzy.                            |
+ |      Macierz - sume macierzy.                            |
  */
 Matrix Matrix::operator+(Matrix tmp)
 {
@@ -179,4 +179,21 @@ Matrix Matrix::Mobrot_tworzenie(int kat)
     value[1][0]=sin(rad);
     value[1][1]=cos(rad);
     return *this;
+}
+
+bool Matrix::operator==(const Matrix &tmp) const
+{
+    if
+    (
+        abs(this->value[0][1]-tmp.value[0][1])<=epsilon&&
+        abs(this->value[1][0]-tmp.value[1][0])<=epsilon&&
+        abs(this->value[1][1]-tmp.value[1][1])<=epsilon&&
+        abs(this->value[0][0]-tmp.value[0][0])<=epsilon
+    )
+    {
+        return true;
+    }
+    else 
+    return false;
+    
 }

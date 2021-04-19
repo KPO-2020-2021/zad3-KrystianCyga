@@ -127,7 +127,7 @@ Vector Vector::operator*(const double &tmp)
 }
 
 /******************************************************************************
- |  Realizuje dzielenie dwoch wektorow.                                       |
+ |  Realizuje dzielenie wektora przez liczbe.                                       |
  |  Argumenty:                                                                |
  |      this - licznik dzielenia,                                             |
  |      v - mianownik dzielenia.                                              |

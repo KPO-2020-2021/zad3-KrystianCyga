@@ -127,7 +127,19 @@ std::ostream &operator<<(std::ostream &out, prostokat const &prost)
     {
         out << prost.wektor[i] << std::endl;
     }
+    out << prost.wektor[0];
+    
     return out;
+}
+
+std::ofstream &operator<<(std::ofstream &of, prostokat const &prost)
+{
+    of<<std::setprecision(10)<<std::fixed;
+    for (int i = 0; i < 4; i++)
+    {
+        of << prost.wektor[i] << std::endl;
+    }
+    return of;
 }
 
 

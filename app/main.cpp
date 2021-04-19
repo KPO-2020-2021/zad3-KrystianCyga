@@ -23,6 +23,8 @@ int main()
 {
   prostokat prost;
   PzG::LaczeDoGNUPlota Lacze;
+  Vector VecPrzesu;
+
   Lacze.DodajNazwePliku("../datasets/prostokat.dat", PzG::RR_Ciagly, 2);
   Lacze.DodajNazwePliku("../datasets/prostokat.dat", PzG::RR_Punktowy, 2);
   Lacze.ZmienTrybRys(PzG::TR_2D);
@@ -60,7 +62,7 @@ int main()
       break;
 
     case 'p':
-      Vector VecPrzesu;
+      
       std::cout << "Podaj wektor przesuniecia (x) (y): ";
       std::cin >> VecPrzesu;
       prost.owektor(VecPrzesu);
@@ -78,7 +80,7 @@ int main()
 
     case 'm':
 
-      return main();
+      
 
       break;
 

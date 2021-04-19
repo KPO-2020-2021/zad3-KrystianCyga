@@ -9,9 +9,9 @@
 prostokat::prostokat()
     : Vector()
 {
-    for (int i = 0; i < 2; ++i)
+    for (double i = 0; i < 2; ++i)
     {
-        for (int j = 0; j < 2; ++j)
+        for (double j = 0; j < 2; ++j)
         {
             double tab[2] = {i, j};
 
@@ -100,9 +100,12 @@ prostokat prostokat::obrot(double kat, int ilosc)
 
     Mrotacji.Mobrot_tworzenie(kat);
 
-    for (int i = 0; i < 4; i++)
+    for (int j = 0; j < ilosc; j++)
     {
-        obrocony.wektor[i] = Mrotacji * this->wektor[i];
+        for (int i = 0; i < 4; i++)
+        {
+            obrocony.wektor[i] = Mrotacji * this->wektor[i];
+        }
     }
 
     return obrocony;
@@ -110,7 +113,7 @@ prostokat prostokat::obrot(double kat, int ilosc)
 
 prostokat prostokat::obrot(double kat)
 {
-    return this->obrot(kat,1);
+    return this->obrot(kat, 1);
 }
 /******************************************************************************
  |  Przeciazenie operatora <<                                                 |
@@ -127,9 +130,7 @@ std::ostream &operator<<(std::ostream &out, prostokat const &prost)
     return out;
 }
 
-std::ifstream &operator>>(std::istream &in, prostokat &prost)
-{
-}
+
 /******************************************************************************
  |  Metoda zapisu prostokata do pliku                                         |
  |  Argumenty:                                                                |

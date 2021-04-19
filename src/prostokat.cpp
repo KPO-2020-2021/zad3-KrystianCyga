@@ -14,8 +14,8 @@ prostokat::prostokat()
         for (double j = 0; j < 2; ++j)
         {
             double tab[2] = {i, j};
-
-            wektor[i].zapelniacz(tab);
+            int k=i;
+            wektor[k].zapelniacz(tab);
         }
     }
 }

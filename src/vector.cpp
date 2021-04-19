@@ -59,9 +59,9 @@ double Vector::modul()
  |                                                                            |
  |                                                                            |
 */
-void zapelniacz(double arg[2])
+void Vector::zapelniacz(double argu[2])
 {
-    Vector(arg[2]);
+    this->zapelniacz(argu);
 }
 
 /******************************************************************************

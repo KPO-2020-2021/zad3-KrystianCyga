@@ -33,7 +33,7 @@ public:
 
     bool operator == (const Vector &drugi);
 
-    void zapelniacz(double arg[2]);
+    void zapelniacz(double argu[2]);
 
     double modul();
 

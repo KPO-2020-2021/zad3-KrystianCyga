@@ -5,8 +5,8 @@ set(TESTFILES        # All .cpp files in tests/
     src/main.cpp
     src/dummy.cpp
     src/vectortest.cpp
-    src/matrix.cpp
-    src/prostokat.cpp
+    src/matrixtest.cpp
+    src/prostokattest.cpp
 
 )
 

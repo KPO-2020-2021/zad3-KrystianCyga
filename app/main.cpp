@@ -19,11 +19,10 @@
 #include "prostokat.hh"
 #include "../include/lacze_do_gnuplota.hh"
 
-prostokat prost;
-PzG::LaczeDoGNUPlota Lacze;
-
 int main()
 {
+  prostokat prost;
+  PzG::LaczeDoGNUPlota Lacze;
   Lacze.DodajNazwePliku("../datasets/prostokat.dat", PzG::RR_Ciagly, 2);
   Lacze.DodajNazwePliku("../datasets/prostokat.dat", PzG::RR_Punktowy, 2);
   Lacze.ZmienTrybRys(PzG::TR_2D);

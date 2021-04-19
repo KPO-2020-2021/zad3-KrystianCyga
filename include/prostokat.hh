@@ -1,3 +1,4 @@
+#pragma once
 
 #include "SIZE.hh"
 #include "vector.hh"

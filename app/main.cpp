@@ -12,11 +12,11 @@
 #include <fstream>
 #include <string>
 
-#include "exampleConfig.h"
-#include "example.h"
-#include "vector.hh"
-#include "matrix.hh"
-#include "prostokat.hh"
+#include "../include/exampleConfig.h.in"
+#include "../include/example.h"
+#include "../include/vector.hh"
+#include "../include/matrix.hh"
+#include "../include/prostokat.hh"
 #include "../include/lacze_do_gnuplota.hh"
 
 int main()

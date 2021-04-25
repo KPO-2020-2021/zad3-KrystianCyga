@@ -30,6 +30,8 @@ public:
     Matrix Mobrot_tworzenie(int kat);
 
     bool operator==(const Matrix &tmp) const;
+    
+    double gauss();
 };
 
 std::istream &operator>>(std::istream &in, Matrix &mat);

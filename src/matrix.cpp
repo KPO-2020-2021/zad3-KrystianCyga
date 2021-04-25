@@ -76,7 +76,7 @@ double &Matrix::operator()(unsigned int row, unsigned int column)
 
     if (column >= SIZE)
     {
-       std::out_of_range("Error: Macierz jest poza zasiegiem");
+        std::out_of_range("Error: Macierz jest poza zasiegiem");
     }
 
     return value[row][column];
@@ -173,27 +173,59 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat)
  */
 Matrix Matrix::Mobrot_tworzenie(int kat)
 {
-    double rad=kat * M_PI / 180;
-    value[0][0]=cos(rad);
-    value[0][1]=-sin(rad);
-    value[1][0]=sin(rad);
-    value[1][1]=cos(rad);
+    double rad = kat * M_PI / 180;
+    value[0][0] = cos(rad);
+    value[0][1] = -sin(rad);
+    value[1][0] = sin(rad);
+    value[1][1] = cos(rad);
     return *this;
 }
 
 bool Matrix::operator==(const Matrix &tmp) const
 {
-    if
-    (
-        abs(this->value[0][1]-tmp.value[0][1])<=epsilon&&
-        abs(this->value[1][0]-tmp.value[1][0])<=epsilon&&
-        abs(this->value[1][1]-tmp.value[1][1])<=epsilon&&
-        abs(this->value[0][0]-tmp.value[0][0])<=epsilon
-    )
+    if (
+        abs(this->value[0][1] - tmp.value[0][1]) <= epsilon &&
+        abs(this->value[1][0] - tmp.value[1][0]) <= epsilon &&
+        abs(this->value[1][1] - tmp.value[1][1]) <= epsilon &&
+        abs(this->value[0][0] - tmp.value[0][0]) <= epsilon)
     {
         return true;
     }
-    else 
-    return false;
-    
+    else
+        return false;
+}
+
+/******************************************************************************
+ |  Metoda liczenia wyznacznika Gaussem                                       |
+ |  Argumenty:                                                                |
+ |      Macierz                                                               |
+ |  Zwraca:                                                                   |
+ |      Wyznacznik typu double                                                |
+ */
+
+double Matrix::gauss()
+{
+    int i, j, k;
+    double temp, x[SIZE];
+    for (j = 0; j < SIZE - 1; j++)
+    {
+        for (i = j + 1; i < SIZE; i++)
+        {
+            temp = value[i][j] / value[j][j];
+            for (k = 0; k < SIZE; k++)
+            {
+                value[i][k] -= value[j][k] * temp;
+            }
+        }
+    }
+    for (int i = 0; i <SIZE; i++)
+    {
+        x[i]=value[i][i];
+    }
+    double wyznacznik;
+    for (i = 0; i < SIZE; i++)
+    {
+        wyznacznik *= x[i];
+    }
+    return wyznacznik;
 }

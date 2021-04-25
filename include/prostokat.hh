@@ -10,7 +10,7 @@
 #include <fstream>
 #include <iomanip>
 
-#define epsilon 0.00001
+#define epsilon 0.000001
 
 class prostokat : public Vector
 {
@@ -31,6 +31,7 @@ public:
     bool zapis(const std::string &nazwa) const;
     bool owektor(Vector &wek);
     bool wczytaj(const std::string &nazwa);
+    
 };
 
 std::ifstream &operator>>(std::istream &in, prostokat &prost);

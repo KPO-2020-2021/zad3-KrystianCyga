@@ -152,9 +152,9 @@ std::ofstream &operator<<(std::ofstream &of, prostokat const &prost)
  */
 bool prostokat::zapis(const std::string &nazwa) const
 {
-    std::fstream plik;
+    std::ofstream plik;
 
-    plik.open(nazwa, std::fstream::out);
+    plik.open(nazwa, std::ofstream::out);
     if (plik.is_open() == false)
     {
         return false;
@@ -218,3 +218,4 @@ bool prostokat::wczytaj(const std::string &nazwa)
     plik.close();
     return true;
 }
+

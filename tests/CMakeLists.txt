@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 3.12)
 
 # List all files containing tests. (Change as needed)
 set(TESTFILES        # All .cpp files in tests/
-    tests/main.cpp
-    tests/dummy.cpp
-    tests/vectortest.cpp
-    tests/matrixtest.cpp
-    tests/prostokattest.cpp
+    main.cpp
+    dummy.cpp
+    vectortest.cpp
+    matrixtest.cpp
+    prostokattest.cpp
 
 )
 

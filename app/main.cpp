@@ -21,9 +21,12 @@
 
 int main()
 {
+  
   prostokat prost;
   PzG::LaczeDoGNUPlota Lacze;
   Vector VecPrzesu;
+  Matrix M;
+  
 
   Lacze.DodajNazwePliku("../datasets/prostokat.dat", PzG::RR_Ciagly, 2);
   Lacze.DodajNazwePliku("../datasets/prostokat.dat", PzG::RR_Punktowy, 2);
@@ -74,6 +77,7 @@ int main()
       break;
 
     case 'r':
+      prost.boki();
       prost.zapis("../datasets/prostokat.dat");
       Lacze.Rysuj();
       break;

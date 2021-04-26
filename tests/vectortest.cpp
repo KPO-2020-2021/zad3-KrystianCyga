@@ -76,7 +76,7 @@ TEST_CASE("Dzielenie prze skalar")
 TEST_CASE("Operator wyluskania [] ")
 {
   double tab[2] = {3, 2};
-  double x = 3;
+  
 
   Vector a(tab);
 

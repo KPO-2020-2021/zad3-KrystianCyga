@@ -12,7 +12,7 @@
 
 #define epsilon 0.000001
 
-class prostokat : public Vector
+class prostokat
 {
 
     Vector wektor[4];
@@ -35,4 +35,3 @@ public:
 };
 
 std::ifstream &operator>>(std::istream &in, prostokat &prost);
-

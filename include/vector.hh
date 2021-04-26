@@ -31,7 +31,7 @@ public:
 
     double &operator [] (int index);
 
-    bool operator == (const Vector &drugi);
+    bool operator == (const Vector &drugi) const;
 
     void zapelniacz(double argu[2]);
 

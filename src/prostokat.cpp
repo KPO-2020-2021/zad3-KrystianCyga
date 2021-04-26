@@ -7,7 +7,6 @@
  */
 
 prostokat::prostokat()
-    : Vector()
 {
     for (double i = 0; i < 2; ++i)
     {

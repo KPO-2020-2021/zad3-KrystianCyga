@@ -15,7 +15,8 @@ Undefined reference do kolejnych metod...
 Testów jest kilka najwazniejszych ale skoro się nie kompilowały to nie pisalem wiecej.
 Jesli bede mial czas to w majowke poszukam bledow. Bedzie to juz po czasie ale przynajmniej sie czegos wiecej nauczę:).
 
-
+EDIT: 24h Później
+Udalo sie po dlugiej analizie poprawic blad... Teraz program się kompiluje dlatego zabieram się do dalszego debugowania. Już z górki. 
 
 ## Building
 

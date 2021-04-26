@@ -65,7 +65,11 @@ double Vector::modul()
 */
 void Vector::zapelniacz(double argu[2])
 {
-    this->zapelniacz(argu);
+    for (int i = 0; i < 2; i++)
+    {
+       wspolrzedne[i]=argu[i]; 
+    }
+    
 }
 
 /******************************************************************************
@@ -207,10 +211,10 @@ std::istream &operator>>(std::istream &in, Vector &tmp)
     return in;
 }
 
-bool Vector::operator==(const Vector &drugi)
+bool Vector::operator==(const Vector &drugi) const
 {
-    if (abs(this->wspolrzedne[0] - drugi.wspolrzedne[0]) <= epsilon &&
-        abs(this->wspolrzedne[1] - drugi.wspolrzedne[1]) <= epsilon)
+    if (abs(wspolrzedne[0] - drugi.wspolrzedne[0]) <= epsilon &&
+        abs(wspolrzedne[1] - drugi.wspolrzedne[1]) <= epsilon)
     {
         return true;
     }

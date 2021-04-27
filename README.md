@@ -18,6 +18,12 @@ Jesli bede mial czas to w majowke poszukam bledow. Bedzie to juz po czasie ale p
 EDIT: 24h Później
 Udalo sie po dlugiej analizie poprawic blad... Teraz program się kompiluje dlatego zabieram się do dalszego debugowania. Już z górki. 
 
+EDIT: 32h Później
+
+Było kilka problemow z zapisywaniem do pliku poniewaz nie wiedzialem ze ma to wieksze znaczenie dla łacza do gnuplota
+a jednak rysowalo mi prostokat bez lini... Poprawione.
+Przesuniecie o wektor działa bezblednie.
+Z obrotem był taki problem,że chciałem stworzyć kopie, zmodyfikować i nadpisać oryginał, ale nie do końca działało więc zostałem przy operacji na orginale.
 ## Building
 
 Build by making a build directory (i.e. `build/`), run `cmake` in that dir, and then use `make` to build the desired target.

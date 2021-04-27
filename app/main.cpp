@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
+#include <unistd.h>
 
 #include "../include/exampleConfig.h.in"
 #include "../include/example.h"
@@ -21,12 +22,11 @@
 
 int main()
 {
-  
+
   prostokat prost;
   PzG::LaczeDoGNUPlota Lacze;
   Vector VecPrzesu;
   Matrix M;
-  
 
   Lacze.DodajNazwePliku("../datasets/prostokat.dat", PzG::RR_Ciagly, 2);
   Lacze.DodajNazwePliku("../datasets/prostokat.dat", PzG::RR_Punktowy, 2);
@@ -40,7 +40,8 @@ int main()
   while (wyb != 'k')
   {
 
-    std::cout <<"\n"<< "************************MENU************************\n";
+    std::cout << "\n"
+              << "************************MENU************************\n";
     std::cout << "  o-obrot prostokata o zadany kat\n";
     std::cout << "  p-przesuniecie o dany wektor\n";
     std::cout << "  w-wyswietlenie wspolrzednych wierzcholkow\n";
@@ -54,18 +55,42 @@ int main()
     {
 
     case 'o':
-
+      int pos;
       double kat, ilosc;
       std::cout << "Podaj kat obrotu: ";
       std::cin >> kat;
       std::cout << "Podaj ilosc operacji: ";
       std::cin >> ilosc;
-      prost.obrot(kat, ilosc);
+      std::cout << "Czy chcesz ujrzec animacje ? \nZalecam wykonywac ją dla ilosci operacji mniejszych niz 400 i malych katow.\n "
+                   "1-tak\n"
+                   "lub\n"
+                   "2-nie\n-->"
+                   "";
+      std::cin >> pos;
+      if (pos == 1)
+      {
+        Lacze.Rysuj();
+        usleep(2000000);
+        for (int i = 0; i < ilosc; i++)
+        {
+          prost.obrot(kat, 1);
+          prost.zapis("../datasets/prostokat.dat");
+          Lacze.Rysuj();
+          int czas = 10000000 / ilosc;
+          usleep(czas);
+        }
+        prost.boki();
+        std::cout << prost;
+      }
+      else
+      {
+        prost.obrot(kat, ilosc);
+        prost.zapis("../datasets/prostokat.dat");
       std::cout << prost;
-      break;
-
+      }
+        break;
     case 'p':
-      
+
       std::cout << "Podaj wektor przesuniecia (x) (y): ";
       std::cin >> VecPrzesu;
       prost.owektor(VecPrzesu);
@@ -83,8 +108,6 @@ int main()
       break;
 
     case 'm':
-
-      
 
       break;
 

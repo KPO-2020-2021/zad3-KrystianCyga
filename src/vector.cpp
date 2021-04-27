@@ -63,7 +63,7 @@ double Vector::modul()
  |                                                                            |
  |                                                                            |
 */
-void Vector::zapelniacz(double argu[2])
+void Vector::zapeln(double argu[2])
 {
     for (int i = 0; i < 2; i++)
     {

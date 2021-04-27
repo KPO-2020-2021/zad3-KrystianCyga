@@ -66,3 +66,14 @@ TEST_CASE("tworzenie macierzy obrotu 2")
 
   CHECK(M==M2);
 }
+
+TEST_CASE("GAUSS")
+{
+    double tab2[2][2]={2,3,-1,7};
+    Matrix M(tab2);
+    double wyznacznik,odp=17;
+
+    wyznacznik=M.gauss();
+
+  CHECK(odp==wyznacznik);
+}

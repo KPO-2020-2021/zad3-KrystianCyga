@@ -80,7 +80,8 @@ TEST_CASE("Operator wyluskania [] ")
 
   Vector a(tab);
 
-  CHECK(a[0]==3&&a[1]==2);
+  CHECK(a[0]==3);
+  CHECK(a[1]==2);
 }
 
 TEST_CASE("Modul")
@@ -92,3 +93,4 @@ TEST_CASE("Modul")
 
   CHECK(a.modul()==x);
 }
+

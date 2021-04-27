@@ -222,7 +222,7 @@ double Matrix::gauss()
     {
         x[i]=value[i][i];
     }
-    double wyznacznik;
+    double wyznacznik=1;
     for (i = 0; i < SIZE; i++)
     {
         wyznacznik *= x[i];

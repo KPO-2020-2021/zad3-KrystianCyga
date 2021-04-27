@@ -8,13 +8,14 @@
 
 prostokat::prostokat()
 {
+    int k=0;
     for (double i = 0; i < 2; ++i)
     {
         for (double j = 0; j < 2; ++j)
         {
             double tab[2] = {i, j};
-            int k=i;
-            wektor[k].zapelniacz(tab);
+            this->wektor[k].zapeln(tab);
+            k++;
         }
     }
 }

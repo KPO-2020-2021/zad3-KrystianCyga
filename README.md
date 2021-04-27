@@ -24,6 +24,14 @@ Było kilka problemow z zapisywaniem do pliku poniewaz nie wiedzialem ze ma to w
 a jednak rysowalo mi prostokat bez lini... Poprawione.
 Przesuniecie o wektor działa bezblednie.
 Z obrotem był taki problem,że chciałem stworzyć kopie, zmodyfikować i nadpisać oryginał, ale nie do końca działało więc zostałem przy operacji na orginale.
+
+Dodałem prostą animacje dla obrotu prostokat w gnuplocie.
+
+TESTY działają i poprawnie sprawdzają działanie wszystkich metod i funckji.
+
+25:04:2021 Prawie wszystko było gotowe ale wystąpiły wspomniane błędy.
+27:04:2021 Zakonczyłem wszystko czyli dwa dni po terminie, ale przynajmniej wszystko działa. 
+
 ## Building
 
 Build by making a build directory (i.e. `build/`), run `cmake` in that dir, and then use `make` to build the desired target.

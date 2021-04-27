@@ -17,8 +17,6 @@ class prostokat
 
     Vector wektor[4];
 
-    double AB, BC, CD, DA;
-
 public:
 
     friend std::ostream &operator<<(std::ostream &out, prostokat const &prost);

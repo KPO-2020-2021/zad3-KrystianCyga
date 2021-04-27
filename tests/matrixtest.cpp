@@ -38,7 +38,7 @@ TEST_CASE("Operator dodawania macierzy")
 TEST_CASE("Wyłuskanie")
 {
     double tab[2][2]={1,2,3,4};
-    double a=1,b=2,c=3,d=4;
+    double d=4;
     Matrix M(tab);
 
 

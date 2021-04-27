@@ -34,13 +34,13 @@ int main()
 
   char wyb;
 
+  prost.wczytaj("../datasets/prostokat.dat");
+  prost.boki();
+
   while (wyb != 'k')
   {
 
-    prost.wczytaj("../datasets/prostokat.dat");
-    prost.boki();
-
-    std::cout << "************************MENU************************\n";
+    std::cout <<"\n"<< "************************MENU************************\n";
     std::cout << "  o-obrot prostokata o zadany kat\n";
     std::cout << "  p-przesuniecie o dany wektor\n";
     std::cout << "  w-wyswietlenie wspolrzednych wierzcholkow\n";
@@ -96,7 +96,7 @@ int main()
 
     default:
       std::cout << "Zly wybor !!! \n";
-      std::cout << "Mozliwe to o,p,w,m,k\n";
+      std::cout << "Mozliwe to o,r,p,w,m,k\n";
       break;
     }
   }

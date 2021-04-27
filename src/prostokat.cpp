@@ -40,6 +40,8 @@ Vector prostokat::operator[](int punkt)
  */
 void prostokat::boki()
 {
+    double AB, BC, CD, DA;
+
     AB = wektor[0].dlugosc(wektor[1]);
     BC = wektor[1].dlugosc(wektor[2]);
     CD = wektor[2].dlugosc(wektor[3]);
@@ -94,7 +96,6 @@ void prostokat::boki()
  */
 prostokat prostokat::obrot(double kat, int ilosc)
 {
-    prostokat obrocony;
     Matrix Mrotacji;
 
     Mrotacji.Mobrot_tworzenie(kat);
@@ -103,11 +104,11 @@ prostokat prostokat::obrot(double kat, int ilosc)
     {
         for (int i = 0; i < 4; i++)
         {
-            obrocony.wektor[i] = Mrotacji * this->wektor[i];
+            this->wektor[i]=Mrotacji * this->wektor[i];
         }
     }
 
-    return obrocony;
+    return *this;
 }
 
 prostokat prostokat::obrot(double kat)
@@ -213,7 +214,6 @@ bool prostokat::wczytaj(const std::string &nazwa)
             return false;
         }
     }
-    plik >> wektor[3];
     plik.close();
     return true;
 }

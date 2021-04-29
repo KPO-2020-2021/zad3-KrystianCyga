@@ -33,7 +33,7 @@ public:
 
     bool operator == (const Vector &drugi) const;
 
-    void zapeln(double argu[2]);
+    void zapeln(double argu[SIZE]);
 
     double modul();
 

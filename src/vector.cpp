@@ -41,8 +41,13 @@ Vector::Vector(double tmp[SIZE])
  |      Dlugosc wektora                                                       |
 */
 double Vector::dlugosc(const Vector &drugi)
-{
-    return sqrt(pow(drugi.wspolrzedne[0] - this->wspolrzedne[0], 2) + (pow(drugi.wspolrzedne[1] - this->wspolrzedne[1], 2)));
+{   
+    double tmp;
+    for(int i=0;i<SIZE;i++)
+    {
+        tmp+=pow(drugi.wspolrzedne[i] - this->wspolrzedne[i], 2);
+    }
+    return sqrt(tmp);
 }
 /******************************************************************************
  |  Oblicza modul wectora.                                                    |
@@ -52,8 +57,13 @@ double Vector::dlugosc(const Vector &drugi)
  |      -modul wektora                                                        |
 */
 double Vector::modul()
-{
-    return (sqrt(wspolrzedne[0] * wspolrzedne[0] + wspolrzedne[1] * wspolrzedne[1]));
+{   
+    double tmp;
+    for(int i=0;i<SIZE;i++)
+    {
+        tmp+=(wspolrzedne[i] * wspolrzedne[i]);
+    }
+    return sqrt(tmp);
 }
 
 /******************************************************************************
@@ -63,9 +73,9 @@ double Vector::modul()
  |                                                                            |
  |                                                                            |
 */
-void Vector::zapeln(double argu[2])
+void Vector::zapeln(double argu[SIZE])
 {
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < SIZE; i++)
     {
        wspolrzedne[i]=argu[i]; 
     }
@@ -213,8 +223,12 @@ std::istream &operator>>(std::istream &in, Vector &tmp)
 
 bool Vector::operator==(const Vector &drugi) const
 {
-    if (abs(wspolrzedne[0] - drugi.wspolrzedne[0]) <= epsilon &&
-        abs(wspolrzedne[1] - drugi.wspolrzedne[1]) <= epsilon)
+    int tmp=0;
+    for (int i = 0; i < SIZE; ++i)
+    {
+        tmp+=(int)(abs(wspolrzedne[i] - drugi.wspolrzedne[i])<= epsilon);
+    }
+    if (tmp==SIZE)
     {
         return true;
     }

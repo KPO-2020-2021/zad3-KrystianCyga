@@ -99,7 +99,7 @@ prostokat prostokat::obrot(double kat, int ilosc)
 {
     Matrix Mrotacji;
 
-    Mrotacji.Mobrot_tworzenie(kat);
+    Mrotacji.Mobrot2D_tworzenie(kat);
 
     for (int j = 0; j < ilosc; j++)
     {

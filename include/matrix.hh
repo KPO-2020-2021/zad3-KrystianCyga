@@ -27,7 +27,9 @@ public:
 
     const double &operator()(unsigned int row, unsigned int column) const;
 
-    Matrix Mobrot_tworzenie(int kat);
+    Matrix Mobrot2D_tworzenie(int kat);
+
+    Matrix Mobrot3D_tworzenie(int kat,char os);
 
     bool operator==(const Matrix &tmp) const;
     

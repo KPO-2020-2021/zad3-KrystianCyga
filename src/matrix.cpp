@@ -171,7 +171,7 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat)
  |  Zwraca:                                                                 |
  |      Macierz obrotu                                                      |
  */
-Matrix Matrix::Mobrot_tworzenie(int kat)
+Matrix Matrix::Mobrot2D_tworzenie(int kat)
 {
     double rad = kat * M_PI / 180;
     value[0][0] = cos(rad);
@@ -181,13 +181,71 @@ Matrix Matrix::Mobrot_tworzenie(int kat)
     return *this;
 }
 
+Matrix Matrix::Mobrot3D_tworzenie(int kat,char os)
+{
+    double rad = kat * M_PI / 180;
+    do
+    {
+    switch (os)
+    {
+    case 'z':
+    value[0][0] = cos(rad);
+    value[0][1] = -sin(rad);
+    value[1][0] = sin(rad);
+    value[1][1] = cos(rad);
+    value[2][0] = 0;
+    value[2][1] = 0;
+    value[2][2] = 1;
+    value[0][2] = 0;
+    value[1][2] = 0;
+        break;
+    
+    
+    case 'y':
+    value[0][0] = cos(rad);
+    value[0][2] = -sin(rad);
+    value[2][0] = sin(rad);
+    value[2][2] = cos(rad);
+    value[1][0] = 0;
+    value[2][1] = 0;
+    value[1][1] = 1;
+    value[0][1] = 0;
+    value[1][2] = 0;
+    break;
+    case 'x':
+    value[1][1] = cos(rad);
+    value[1][2] = -sin(rad);
+    value[2][1] = sin(rad);
+    value[2][2] = cos(rad);
+    value[2][0] = 0;
+    value[0][1] = 0;
+    value[0][0] = 1;
+    value[0][2] = 0;
+    value[1][0] = 0;
+    break;
+
+    default:
+    std::cout<<"Blednie podana os! Mozliwe to x,y,z\nPodaj os: ";
+    std::cin>>os;
+    break;
+    }
+    }
+    while (os!='z'&&os!='x'&&os!='y');
+
+    return *this;
+}
+
 bool Matrix::operator==(const Matrix &tmp) const
 {
-    if (
-        abs(this->value[0][1] - tmp.value[0][1]) <= epsilon &&
-        abs(this->value[1][0] - tmp.value[1][0]) <= epsilon &&
-        abs(this->value[1][1] - tmp.value[1][1]) <= epsilon &&
-        abs(this->value[0][0] - tmp.value[0][0]) <= epsilon)
+    int prawdy = 0;
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int j = 0; j < SIZE; j++)
+        {
+            prawdy += (int)(abs(this->value[i][j] - tmp.value[i][j]) <= epsilon);
+        }
+    }
+    if (prawdy==SIZE*SIZE)
     {
         return true;
     }
@@ -218,11 +276,11 @@ double Matrix::gauss()
             }
         }
     }
-    for (int i = 0; i <SIZE; i++)
+    for (int i = 0; i < SIZE; i++)
     {
-        x[i]=value[i][i];
+        x[i] = value[i][i];
     }
-    double wyznacznik=1;
+    double wyznacznik = 1;
     for (i = 0; i < SIZE; i++)
     {
         wyznacznik *= x[i];

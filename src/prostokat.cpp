@@ -41,6 +41,7 @@ Vector prostokat::operator[](int punkt)
  */
 void prostokat::boki()
 {
+    if(SIZE==2){
     double AB, BC, CD, DA;
 
     AB = wektor[0].dlugosc(wektor[1]);
@@ -85,6 +86,11 @@ void prostokat::boki()
         std::cout << "  " << dlugosc2 << " boki : " << BC << " i " << DA << " nie sa rowne.\n\n";
     }
     std::cout.precision(4);
+    }
+    if(SIZE==3)
+    {
+        double AB, BC, CD, DA;
+    }
 }
 
 /******************************************************************************
